@@ -141,6 +141,7 @@ public class MapCharacter extends GameCharacter {
 	@Override
 	public void levelUp() {
 		super.levelUp();
+		this.experience = 0;
 	}
 
 	public void receiveDamage(int damage) {
