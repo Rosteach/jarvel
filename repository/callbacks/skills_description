@@ -1,4 +1,4 @@
    
-| Strength -> defines your damage rate         | default -> {0}
-| Agility -> impact rate and critical hit      | default -> {1}
-| Mana -> defines super power charging speed   | default -> {2}
+| Strength -> defines your damage rate            | default -> {0}
+| Agility -> impact rate and critical hit         | default -> {1}
+| Mindset -> defines super power charging speed   | default -> {2}

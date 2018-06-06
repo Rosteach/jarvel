@@ -1,13 +1,5 @@
-  	     0   1               {0}
- 	     __  __              __
-     0  |__||__|  ......... |__| 
-	     .
-         .
-         .
-|Y       .
-|        .
-|        .
-|    	 __  __              __
-|   {1}	|__||__|  ......... |__| 
-|
-|_______________X
+
+You could easily navigate over the map using indexes
+NOTE: Supports only coordinates with comma ',' separation 
+example: 1,2
+or you could use keyword 'random' to navigate randomly

@@ -1,0 +1,15 @@
+Hey {0}, you are attacked by {6}!
+
+YourInfo:		Assailant info:
+name: {0},		name: {6},
+level: {1},		level: {7},
+health: {2},		health: {8},
+strength: {3},		strength: {9},		
+agility: {4},		agility: {10},
+mindset: {5}		mindset: {11}					
+	 _______ 	
+	|       |
+	| FIGHT |	
+	|_______| 
+							
+You could easily continue your journey, just tell the coordinates where you would love to go?
