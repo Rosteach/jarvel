@@ -53,6 +53,7 @@ public final class CharacterUtils {
 				.superPower(new SuperPower(nCharacter.getSuperPowerType())).build();
 		mapCharacter.defaultInitialization();
 		mapCharacter.levelsUp(rLevel);
+		mapCharacter.setExperience(CharacterFunctions.calculateExperience(mapCharacter.getHealth()));
 		return mapCharacter;
 	}
 }
