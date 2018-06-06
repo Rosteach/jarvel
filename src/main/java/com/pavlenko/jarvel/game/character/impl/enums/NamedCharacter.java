@@ -2,6 +2,7 @@ package com.pavlenko.jarvel.game.character.impl.enums;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public enum NamedCharacter {
@@ -100,6 +101,9 @@ public enum NamedCharacter {
 
 	SKELETALWING("Skeletalwing", Race.BEAST, Gender.IT, SuperPowerType.HEALING);
 
+	private static final NamedCharacter[] VALUES = values();
+	private static final Random RANDOM = new Random();
+
 	private String name;
 	private Race race;
 	private Gender gender;
@@ -128,8 +132,9 @@ public enum NamedCharacter {
 		return superPowerType;
 	}
 
-	public static List<NamedCharacter> findAllWithRaceLike(Race... races) {
-		return Arrays.stream(values()).filter(v -> Arrays.stream(races).anyMatch(r -> r.equals(v.getRace())))
-				.collect(Collectors.toList());
+	public static NamedCharacter randomOf(Race... races) {
+		final List<NamedCharacter> list = Arrays.stream(VALUES)
+				.filter(v -> Arrays.stream(races).anyMatch(r -> r.equals(v.getRace()))).collect(Collectors.toList());
+		return list.get(RANDOM.nextInt(list.size()));
 	}
 }
