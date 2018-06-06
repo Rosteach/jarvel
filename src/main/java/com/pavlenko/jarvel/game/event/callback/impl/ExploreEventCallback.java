@@ -6,7 +6,6 @@ import com.pavlenko.jarvel.game.GameContext;
 import com.pavlenko.jarvel.game.character.GameCharacter;
 import com.pavlenko.jarvel.game.character.impl.MapCharacter;
 import com.pavlenko.jarvel.game.character.impl.UserCharacter;
-import com.pavlenko.jarvel.game.character.impl.enums.NamedCharacter;
 import com.pavlenko.jarvel.game.character.impl.enums.Race;
 import com.pavlenko.jarvel.game.event.callback.EventRepositoryCallback;
 import com.pavlenko.jarvel.game.event.mapping.annotation.EventCallbackEntity;
@@ -37,17 +36,15 @@ public class ExploreEventCallback implements EventRepositoryCallback {
 	private void executeMapCallback() {
 		if (GameContext.getInstance().getGameMap() == null) {
 			int mapSize = PropertyHolder.getInstance().getIntProperty(PropertyKey.MAP_SIZE);
-
+			int cLevel = GameContext.getInstance().getUserCharacter().getLevel();
 			// create beast characters
-			final List<MapCharacter> mapCharacters = CharacterUtils.createRandomNamedCharachters(
-					GameContext.getInstance().getUserCharacter(), NamedCharacter.findAllWithRaceLike(Race.BEAST),
-					PropertyHolder.getInstance().getIntProperty(PropertyKey.MAP_CHARACTERS_BEAST_SIZE));
+			final List<MapCharacter> mapCharacters = CharacterUtils.createRandomMapCharactersByRace(cLevel,
+					PropertyHolder.getInstance().getIntProperty(PropertyKey.MAP_CHARACTERS_BEAST_SIZE), Race.BEAST);
 
 			// create and add heroes characters
-			mapCharacters
-					.addAll(CharacterUtils.createRandomNamedCharachters(GameContext.getInstance().getUserCharacter(),
-							NamedCharacter.findAllWithRaceLike(Race.CRIPTONIAN, Race.HUMAN, Race.DWARF, Race.ELF),
-							PropertyHolder.getInstance().getIntProperty(PropertyKey.MAP_CHARACTERS_HEROES_SIZE)));
+			mapCharacters.addAll(CharacterUtils.createRandomMapCharactersByRace(cLevel,
+					PropertyHolder.getInstance().getIntProperty(PropertyKey.MAP_CHARACTERS_HEROES_SIZE), Race.HUMAN,
+					Race.CRIPTONIAN, Race.DWARF, Race.ELF));
 
 			final GameMap newMap = new GameMap(mapSize);
 			newMap.fillMap(mapCharacters);

@@ -5,7 +5,7 @@ import java.util.Random;
 import com.pavlenko.jarvel.game.character.impl.MapCharacter;
 import com.pavlenko.jarvel.game.event.callback.EventCallback;
 import com.pavlenko.jarvel.game.event.method.Text;
-import com.pavlenko.jarvel.utils.CharacterUtils;
+import com.pavlenko.jarvel.utils.CharacterFunctions;
 
 public enum AttackAction implements EventCallback {
 	SIMPLE_ATTACK("simple attack") {
@@ -53,10 +53,9 @@ public enum AttackAction implements EventCallback {
 	 * @param value
 	 */
 	public void updateCharacters(MapCharacter attacker, MapCharacter defender, int value) {
-		int damage = CharacterUtils.calculateDamage(value);
-		int newHealth = defender.getHealth() - damage;
-		defender.setHealth(newHealth <= 0 ? 0 : newHealth);
-		CharacterUtils.updateSuperPower(attacker, damage);
+		int damage = CharacterFunctions.calculateDamage(value);
+		defender.receiveDamage(damage);
+		attacker.receiveSuperPower(damage);
 	}
 
 	public static AttackAction randomAttack() {

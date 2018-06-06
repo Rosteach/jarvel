@@ -137,4 +137,20 @@ public class MapCharacter extends GameCharacter {
 		super.refreshAfterFight();
 		this.superPower.setValue(0);
 	}
+
+	@Override
+	public void levelUp() {
+		super.levelUp();
+		this.experience = super.getHealth() / 2;
+	}
+
+	public void receiveDamage(int damage) {
+		int newHealth = super.getHealth() - damage;
+		super.setHealth(newHealth <= 0 ? 0 : newHealth);
+	}
+
+	public void receiveSuperPower(int damage) {
+		int curr = superPower.getValue();
+		superPower.setValue(curr + damage);
+	}
 }
