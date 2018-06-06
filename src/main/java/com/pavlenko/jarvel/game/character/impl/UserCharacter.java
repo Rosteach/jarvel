@@ -38,7 +38,7 @@ public class UserCharacter extends MapCharacter {
 	 * @param gold
 	 */
 	public void addGold(int gold) {
-		setGold(getGold() + gold);
+		setGold(this.gold + gold);
 	}
 
 	/**
