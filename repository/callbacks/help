@@ -1,14 +1,27 @@
+The interaction designed in chatbot manner, you are very flexible to use any command within any point you need
+as for example you could call 'save' while fighting, 'fight' from menu, etc...
 Here is a list for all common commands:
 
 	GLOBAL:
-		- menu
-		- new game
-		- load game
-		- save game
-		- fight
-		
+		menu
+		new game | new
+		load game | load
+		save game | save
+		explore
+		fight 
+	MAP:	
+		random
+		x,y  (simply the coordinates) 
 	FIGHT:
-		- attack
-		- kick
-		- super power
-		- slide down
+		simple attack
+		powerful attack
+		super power
+	CHARACTER:
+		this clause used followup manner, therefore each input would be delegated to the next step 
+		example  
+		 ______    ________    ____  
+		|      |  |        |  |    |
+		| MALE |  | FEMALE |  | IT |
+		|______|  |________|  |____|
+			
+		simply male,female,it  as an expected input	
